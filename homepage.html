@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="utf-8">
+                <title>Start Page</title>
+    <style>
+	#brandLogo {
+  height: 192px;
+  width: 192px;
+  margin: 22px auto 31px;
+  background-image: url("chrome://branding/content/about-logo.png");
+  background-size: 192px auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+	.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: /*whatever width you want*/;
+}
+                        body {
+                                background:#111111;
+								background-image: url("http://i.imgur.com/dUQKsrO.png");
+								background-size: 1920px auto;
+								background-repeat: no-repeat;
+}
+								//^main background
+                                margin: 0px;
+                        }
+ 
+      input {
+                                border: none;
+                                box-sizing: border-box;
+        display: block;
+        font: 36px "Avenir", "Segoe UI", Helvetica, Arial, sans-serif;
+        margin: 30px auto;
+        outline: none;
+                                padding: 0px 1000px;
+                                text-align: center;
+        width: 5%;
+      }
+ 
+                        main {
+                                display: block;
+                                margin: 0px auto;
+                                width: 600px;
+                        }
+ 
+                        span {
+                                display: inline-block;
+                                float: left;
+                                width: 150px;
+                        }
+ 
+                        label {
+                                color: #FFF;
+                                display: block;
+                                font: 24px "Avenir", "Segoe UI", Helvetica, Arial, sans-serif;
+                                height: 150px;
+                                line-height: 150px;
+                                text-align: center;
+                                width: 150px;
+                        }
+ 
+                        a {
+                                -moz-transition: background .2s, height .2s, line-height .2s, opacity .2s;
+                                -webkit-transition: background .2s, height .2s, line-height .2s, opacity .2s;
+                                color: #FFF;
+                                display: block;
+                                font: 0px "Avenir", "Segoe UI", Helvetica, Arial, sans-serif;
+                                height: 0px;
+                                line-height: 0px;
+                                text-align: center;
+                                text-decoration: none;
+                                transition: background .2s, font-size .2s, height .2s, line-height .2s;
+                                width: 150px;
+                        }
+ 
+                        a:hover {
+                                background: rgba(255, 255, 255, .2);
+                        }
+ 
+                        span:hover a {
+                                font-size: 18px;
+                                height: 50px;
+                                line-height: 50px;
+                        }
+  
+                </style>
+    <script>
+      window.onload = function() {
+        searchBox = document.getElementsByTagName('input')[0];
+        searchBox.blur();
+                                noKeyword = true;
+      }
+ 
+      function search(event) {
+        searchBox.focus();
+        if(event.keyCode == 13 && searchBox.value != '') {
+                                        check('/r/', 'https://reddit.com/r/');
+                                        check('/u/', 'https://reddit.com/u/');
+                                        if(noKeyword == true) window.open('https://duckduckgo.com/?kae=d&kak=-1&k1=-1&kaj=m&kg=p&k5=1&kw=s&q=' + searchBox.value, '_self');
+                                }
+      }
+ 
+                        function check(keyword, destination) {
+                                if(searchBox.value.indexOf(keyword) == 0) {
+                                        noKeyword = false;
+                                        window.open(destination + (searchBox.value).substring(keyword.length), '_self');
+                                }
+                        }
+	footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 54px;
+	}
+    </script>
+        </head>
+		
+        <body >
+				
+				
+				
+				</div>
+				
+		<div xmlns="http://www.w3.org/1999/xhtml" id="brandLogo">
+		</div>
+
+		
+				<div class="outer">
+		<div class="justify">
+		<div class="inner">
+                <main>
+                        <span style="background: #151515">
+                                <label>4chan</label>
+                                <a href="http://boards.4chan.org/po/">/po/</a>
+                                <a href="http://boards.4chan.org/vg/agdg">/vg/agdg</a>
+								<a href="http://boards.4chan.org/3/">/3/</a>
+								<a href="http://boards.4chan.org/gd/">/gd/</a>
+								<a href="http://boards.4chan.org/g/">/g/</a>
+								<a href="http://boards.4chan.org/diy/">/diy/</a>
+                        </span>
+                        <span style="background: #222222">
+                                <label>reference</label>
+                                <a href="http://www.color-hex.com/">color-hex</a>
+                                <a href="http://stackoverflow.com/">Stack Overflow</a>
+                                <a href="http://www.w3schools.com/">W3Schools</a>
+                        </span>
+                        <span style="background: #2f2f2f">
+                                <label>video/sound</label>
+                                <a href="https://www.youtube.com">youtube</a>
+                                <a href="https://www.vessel.com">vessel.com</a>
+                                <a href="https://soundcloud.com/">sound cloud</a>
+								<a href="http://twitch.tv/">twitch.tv</a>
+								<a href="http://pixlr.com/editor/">pixlr</a>
+                        </span>
+                        <span style="background: #484848">
+                                <label>tools</label>
+                                <a href="https://www.draw.io/">Draw.io</a>
+                                <a href="https://www.algebra.com/services/rendering/simplifier.mpl">Algebra Solver</a>
+                                <a href="https://en.wikipedia.org/wiki/Main_Page">Wikipedia</a>
+                                <a href="https://docs.google.com/">google docs</a>
+                        </span>
+                </main>
+				<div align="center">
+				<table border="0" align="center" cellpadding="1" style="
+				width: 800px;
+				height: 200px;
+				">
+				<div>
+				<div align="center">
+						<table style="width:1%">
+							<tr>
+								<td><a href="https://docs.google.com/"><img src="https://lh4.ggpht.com/-wROmWQVYTcjs3G6H0lYkBK2nPGYsY75Ik2IXTmOO2Oo0SMgbDtnF0eqz-BRR1hRQg=w300" alt="Smiley face" height="52" width="52"></a></td>
+								<td><a href="https://drive.google.com"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Logo_of_Google_Drive.png" alt="Smiley face" height="52" width="52"></a></td>
+								<td><a href="https://mail.google.com/mail/u/0/"><img src="https://lh6.ggpht.com/8-N_qLXgV-eNDQINqTR-Pzu5Y8DuH0Xjz53zoWq_IcBNpcxDL_gK4uS_MvXH00yN6nd4=w300" alt="Smiley face" height="52" width="52"></a></td>
+								<td><a href="http://putlocker.is/"><img src="http://www.clipartbest.com/cliparts/9i4/o7o/9i4o7o4iE.png" alt="Smiley face" height="52" width="52"></a></td>
+								<td><a href="https://www.youtube.com/">"<img src="https://s.ytimg.com/yts/img/favicon_144-vflWmzoXw.png" alt="Smiley face" height="52" width="52"></a></td>
+							</tr>
+						</table>
+					
+				</div>
+				
+        </body>
+		
+		</div>
+		
+		</div>
+		</div>
+		
+		</html>
