@@ -45,7 +45,7 @@ td{
 }
 #aboutus{
 	padding:0px;
-	display:flex;	 
+	display:block;	 
 	float: left;
 	width:40%;
 	
