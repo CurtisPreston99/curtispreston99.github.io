@@ -1,3 +1,4 @@
+
 h1{
 	text-align: center;
 	
@@ -9,21 +10,18 @@ h1{
 }
 
 #home{
+	
 	margin: auto;
     text-align: center;
     padding-top: 10%;
 }
 
-#page{
-	margin: auto;
-    text-align: center;
-    padding-top: 0%;
-}
 
 
 table{
 	margin: auto;
     text-align: center;
+	padding-left: 15%;
 }
 
 tr{
@@ -32,6 +30,10 @@ tr{
 td{
 	text-align: center;	
 }
+#himg{
+	width: 100%;
+}
+
 #navbar{
 	width:10%;
 }
@@ -39,4 +41,35 @@ td{
 	width:75%;
 	text-align: left;
 	
+	
+}
+#aboutus{
+	padding:0px;
+	display:flex;	 
+	float: left;
+	width:40%;
+	
+}
+#opentimes{
+	display:block;
+	float:left;
+	padding-left:10%;
+	padding-right:10%;
+	align-self:center;
+	padding-top:5%;
+	
+	text-align: left;
+	
+}
+#black{
+	background-color: black;
+}
+#page{
+	margin: auto;
+    width: 50%;
+padding: 10px;	
+text-align: center;
+}
+#cen{
+	text-align: center;
 }
