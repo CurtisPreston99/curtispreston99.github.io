@@ -1,0 +1,75 @@
+﻿<html>
+	<head>
+		<title>real time html/css/javascript editor</title>
+
+		<script language="javascript" type="text/javascript" src="editarea/edit_area/edit_area_full.js"></script>
+<script language="javascript" type="text/javascript">
+editAreaLoader.init({
+	id : "textarea"		// textarea id
+	,syntax: "html"			// syntax to be uses for highgliting
+	,start_highlight: true		// to display with highlight mode on start-up
+	,allow_toggle: false
+	,allow_resize: false
+	,toolbar: "search,|,save,syntax_selection"
+	,change_callback: refresh()
+});
+</script>
+
+	<script>
+		function load(){
+			text=localStorage.getItem("htmlauto");
+			document.getElementById('textarea').value=text;
+			refresh();
+		}
+		function refresh(id){
+			var textContent = document.getElementById('textarea').value;
+			localStorage.setItem("htmlauto",textContent);
+			document.getElementById('website').srcdoc=textContent;
+
+		}
+
+window.onload=load;
+	</script>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+
+		body{
+
+			background: #b5ccc8;
+
+		}
+		.main{
+			width: 100%;
+			height:95%;
+			display: inline-flex;
+		}
+		#textarea{
+			width: 50%;
+			height:100%;
+			margin: 10px;
+		}
+
+		#website{
+			background: white;
+			border: none;
+			margin: 10px;
+			width: 50%;
+			height:100%;
+		}
+
+	</style>
+	</head>
+	<body>
+		<div class="main">
+
+			<textarea id='textarea' onkeyup = "refresh()"></textarea>
+
+<iframe id='website'></iframe>
+		</div>
+	</body>
+
+
+</html>
