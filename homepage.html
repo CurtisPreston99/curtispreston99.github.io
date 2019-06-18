@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html >
         <head>
                 <meta charset="utf-8">
                 <title>Start Page</title>
     <style>
 
-body {
-    overflow:hidden;
-}
 #PONYS {
 		text-align: center;
  	margin: auto;
    }
 	.outer {
     display: table;
-    position: absolute;
+
     height: 100%;
     width: 100%;
 }
@@ -27,32 +24,26 @@ body {
 .inner {
     margin-left: auto;
     margin-right: auto;
-    width: 40%;
+    
 }
                         body {
+                                    min-height: 100%;
+
+                                height: 100%;
+                                  margin: 0;
+                                  padding: 0;
                                 background:#000000;
-								background-image: url("https://i.imgur.com/GRGak3O.png");
-								//background-image: url("http://i.imgur.com/dUQKsrO.png");
-								background-size: 1920px auto;
-								background-repeat: no-repeat;
-}
-								//^main background
-                                margin: 0px;
+                                      background-repeat: no-repeat;
+
+                                    overflow:hidden;
+                                    margin: auto;
+                                    padding-top:5%;
+background-size: cover;
+
+
                         }
 
-      input {
-                                border: none;
-                                box-sizing: border-box;
-        display: block;
-        font: 36px "Avenir", "Segoe UI", Helvetica, Arial, sans-serif;
-        margin: 30px auto;
-        outline: none;
-                                padding: 0px 1000px;
-                                text-align: center;
-        width: 5%;
-      }
-
-                        main {
+                        #main {
 
                         }
 
@@ -95,42 +86,55 @@ body {
                                 height: 50px;
                                 line-height: 50px;
                         }
+                        
+                        footer {
+							position: absolute;
+							bottom: 0;
+							width: 100%;
+							height: 54px;
+							}
+
+                        input[type=text] {
+  background-color: black;
+  color:white;
+  width:100%;
+  text-align: center;
+border: 2px solid grey;
+  border-radius: 4px;
+    
+
+}
 
                 </style>
-    <script>
-      window.onload = function() {
-        searchBox = document.getElementsByTagName('input')[0];
-        searchBox.blur();
-                                noKeyword = true;
-      }
+ 
 
-      function search(event) {
-        searchBox.focus();
-        if(event.keyCode == 13 && searchBox.value != '') {
-                                        check('/r/', 'https://reddit.com/r/');
-                                        check('/u/', 'https://reddit.com/u/');
-                                        if(noKeyword == true) window.open('https://duckduckgo.com/?kae=d&kak=-1&k1=-1&kaj=m&kg=p&k5=1&kw=s&q=' + searchBox.value, '_self');
-                                }
-      }
-
-                        function check(keyword, destination) {
-                                if(searchBox.value.indexOf(keyword) == 0) {
-                                        noKeyword = false;
-                                        window.open(destination + (searchBox.value).substring(keyword.length), '_self');
-                                }
-                        }
-	footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 54px;
-	}
-    </script>
+ 
         </head>
 
-        <body >
+        <body id="main">
+		<table align="center">
+        <tr><td>
+<script>
 
-		<br>
+  function searchGoogle(s){
+if(event.key === 'Enter') {
+       s=  document.getElementById("search").value;
+       console.log(s)
+       q="https://www.google.com/search?q="+encodeURIComponent(s)+"&oq="+encodeURIComponent(s);
+        console.log(q)
+       window.open( q, "_top");
+
+    }
+    
+  }
+</script>
+
+<input id="search" type="text" placeholder="search" class="search" onkeydown="searchGoogle(this.input)"/>  
+
+
+        </tr></td>
+		<tr><td>
+		
 
 
 		<div class="outer">
@@ -181,29 +185,27 @@ body {
                 </main>
 			</div>
 		</div>
-
-
+</div>
+		</tr></td>
+		<tr><td>
 				<div align="center">
-				<table border="0" align="center" cellpadding="1" style="
-				width: 800px;
-				height: 200px;
-				">
-				<div>
+                                <table><tr><td>
+								<a href="https://docs.google.com/document/u/0/"><img src="https://lh4.ggpht.com/-wROmWQVYTcjs3G6H0lYkBK2nPGYsY75Ik2IXTmOO2Oo0SMgbDtnF0eqz-BRR1hRQg=w300" alt="Smiley face" height="52" width="52"></a>
+                                </td>
+                                <td>
+								<a href="https://drive.google.com"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Logo_of_Google_Drive.png" alt="Smiley face" height="52" width="52"></a>
+                                </td>
+                                <td>
+								<a href="https://music.youtube.com/"><img src="https://cdn.wccftech.com/wp-content/uploads/2018/01/Youtube-music.png" alt="Smiley face" height="52" width="52"></a>
+                                </td>
+                                <td>
+								<a href="https://docs.google.com/spreadsheets/d/1D_tei0gB_IVzr_5jND66SiMKSHehU-NgJFtbES6SNSQ"><img src="https://cdn4.iconfinder.com/data/icons/colorful-design-basic-icons-1/550/investment_money_red-512.png" alt="Smiley face" height="52" width="52"></a>
+                                </td>
+                                <td>
+								<a href="https://www.youtube.com/">"<img src="https://s.ytimg.com/yts/img/favicon_144-vflWmzoXw.png" alt="Smiley face" height="52" width="52"></a>
+                                </tr></td>
+							</table>
 
-
-        </body>
-		<footer>
-			<div align="center">
-						<table style="width:1%">
-							<tr>
-								<td><a href="https://docs.google.com/document/u/0/"><img src="https://lh4.ggpht.com/-wROmWQVYTcjs3G6H0lYkBK2nPGYsY75Ik2IXTmOO2Oo0SMgbDtnF0eqz-BRR1hRQg=w300" alt="Smiley face" height="52" width="52"></a></td>
-								<td><a href="https://drive.google.com"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Logo_of_Google_Drive.png" alt="Smiley face" height="52" width="52"></a></td>
-								<td><a href="https://music.youtube.com/"><img src="https://cdn.wccftech.com/wp-content/uploads/2018/01/Youtube-music.png" alt="Smiley face" height="52" width="52"></a></td>
-								<td><a href="https://docs.google.com/spreadsheets/d/1D_tei0gB_IVzr_5jND66SiMKSHehU-NgJFtbES6SNSQ"><img src="https://cdn4.iconfinder.com/data/icons/colorful-design-basic-icons-1/550/investment_money_red-512.png" alt="Smiley face" height="52" width="52"></a></td>
-								<td><a href="https://www.youtube.com/">"<img src="https://s.ytimg.com/yts/img/favicon_144-vflWmzoXw.png" alt="Smiley face" height="52" width="52"></a></td>
-							</tr>
-
-						</table>
 				<br>
 
 
@@ -212,21 +214,75 @@ body {
 			<br>
 			<br>
 			<br>
+			
 			<p>
+			</tr></td>
+			<tr><td>
 		<div align="center">
-      <table>
-
-        <tr>
-
-    <td>
-		<a href="http://ponycountdown.com"><img src="http://ponycountdown.com/countdown.php" alt="PonyCountdown.com"/></a>
-  </td>
-</tr>
-<tr>
+      
   <iframe src="http://wizord-gaming.github.io/counter.html" frameborder="0"></iframe>
-</tr>
+
 		</div>
 			</p>
-		</footer>
+			</tr></td>
+			</table>
+		</body>
+ <script>
+ 
+ function randombg(){
+  var bigSize = ["url('https://i.imgur.com/m1Bdsap.gif')",
+                 "url('https://i.imgur.com/C8fE24U.jpg')",
+                 "url('https://i.imgur.com/lkiEgoT.jpg')",
+                 "url('https://i.imgur.com/Mf4T1Ln.jpg')",
+                 "url('https://i.imgur.com/rmcOdYP.jpg')",
+                 "url('https://i.imgur.com/Qg9t3M5.jpg')",
+                 "url('https://i.imgur.com/CH2fwLv.jpg')",
+                 "url('https://i.imgur.com/n8SIc3v.jpg')",
+                 "url('https://i.imgur.com/AKgtito.jpg')",
+                 "url('https://i.imgur.com/ncAIZ0N.jpg')",
+                 "url('https://i.imgur.com/PyqQy3y.jpg')",
+                 "url('https://i.imgur.com/DwKVCxr.jpg')",
+                 "url('https://i.imgur.com/NxjwmYE.jpg')",
+                 "url('https://i.imgur.com/60VKNk2.jpg')",
+                 "url('https://i.imgur.com/H4256iX.jpg')",
+                 "url('https://i.imgur.com/sTsP2kg.jpg')",
+                 "url('https://i.imgur.com/On3z3df.jpg')",
+                 "url('https://i.imgur.com/92nd20a.jpg')",
+                 "url('https://i.imgur.com/Efn083b.jpg')",
+                 "url('https://i.imgur.com/71HmpKe.jpg')",
+                 "url('https://i.imgur.com/ELgQkYb.jpg')",
+                 "url('https://i.imgur.com/xZYCLe3.jpg')",
+                 "url('https://i.imgur.com/dZVEZhE.jpg')",
+                 "url('https://i.imgur.com/jPNAcHb.jpg')",
+                 "url('https://i.imgur.com/6JuiMHZ.jpg')",
+                 "url('https://i.imgur.com/K9vE6Wq.jpg')",
+                 "url('https://i.imgur.com/Rot3nnN.jpg')",
+                 "url('https://i.imgur.com/ERECEGw.jpg')",
+                 "url('https://i.imgur.com/nmiqlPB.jpg')",
+                 "url('https://i.imgur.com/OkMpXES.jpg')",
+                 "url('https://i.imgur.com/jEZdt59.jpg')",
+                 "url('https://i.imgur.com/x4jRxjs.jpg')",
+                 "url('https://i.imgur.com/Cn1OLOF.jpg')",
+                 "url('https://i.imgur.com/BfwuclR.jpg')",
+                 "url('https://i.imgur.com/kvJFBu9.jpg')",
+                 "url('https://i.imgur.com/ysJJkCo.jpg')",
+                 "url('https://i.imgur.com/VCbb35Y.jpg')",
+                 "url('https://i.imgur.com/fvLthAn.jpg')",
+                 "url('https://i.imgur.com/BDOVVoW.jpg')",
+                 "url('https://i.imgur.com/1AoqJp1.jpg')",
+                 "url('https://i.imgur.com/XFJsGS0.jpg')",
+                 "url('https://i.imgur.com/WWGCd4g.jpg')",
+                 "url('https://i.imgur.com/Ecuc6FF.jpg')",
+                 "url('https://i.imgur.com/ZVP6gXp.jpg')",
+                 ];
+  
+  var random= Math.floor(Math.random() * bigSize.length) + 0;               
+  document.getElementById("main").style.backgroundImage=bigSize[random];
+  console.log(random);
+  document.getElementById("search").select();
 
+}
+
+randombg();
+ </script>
 		</html>
