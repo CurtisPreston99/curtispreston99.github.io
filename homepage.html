@@ -107,6 +107,27 @@ border: 2px solid grey;
 
 }
 
+
+button {
+color: #ffffff;
+  background-color: #203242;
+  font-family: inherit;
+  font-size: inherit;
+  margin-left: 6px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+width:100%;
+}
+button:hover{
+  background: #324759;
+}
+
+button:focus{
+  box-shadow: 0 0 0 2px #0096bfab;
+}
+
                 </style>
  
 
@@ -118,22 +139,29 @@ border: 2px solid grey;
         <tr><td>
 <script>
 
-  function searchGoogle(s){
+  function keypress(s){
 if(event.key === 'Enter') {
        s=  document.getElementById("search").value;
        console.log(s)
-       q="https://www.google.com/search?q="+encodeURIComponent(s)+"&oq="+encodeURIComponent(s);
-        console.log(q)
-       window.open( q, "_top");
-
+       
+        searchgoogle(s);
     }
     
   }
+
+    function searchgoogle(s){
+       q="https://www.google.com/search?q="+encodeURIComponent(s)+"&oq="+encodeURIComponent(s);
+        console.log(q);
+       window.open( q, "_top");
+    }
+  
 </script>
 
-<input id="search" type="text" placeholder="search" class="search" onkeydown="searchGoogle(this.input)"/>  
+<input id="search" type="text" placeholder="search" class="search" onkeydown="keypress(this.input)"/>  
 
-
+</tr></td>
+		<tr><td>
+        <div id="sugestions"/>
         </tr></td>
 		<tr><td>
 		
@@ -254,6 +282,47 @@ if(event.key === 'Enter') {
   document.getElementById("search").select();
 
 }
+
+
+
+function addsugestions(data){
+	console.log(data[1]);
+    list="<table width=100%>"
+    for(i=0;i<data[1].length;i++){
+        list+="<tr><td><button onclick='searchgoogle(\""+data[1][i]+"\")'>";
+        list+=data[1][i];
+        list+="</button></tr></td>";
+    }
+    list+="</table>"
+console.log(list);
+document.getElementById('sugestions').innerHTML=list;
+}
+
+
+var myScript = '';
+
+/* this section handles what happens after a key is pressed inside your input text box */
+document.getElementById('search').onkeyup = function(){
+
+	/* this variable stores whatever is in the input text box */
+	var stuff_in_text_box = document.getElementById('search').value;
+    
+    try{
+    document.getElementById('dataget').remove()
+    }catch{
+    }
+	/* this is the script that will hold the data we're trying to get */
+	myScript = document.createElement('script');
+	
+    myScript.id="dataget";
+	/* this sets the src of the script equal to the url of the data */
+	myScript.src = 'http://en.wikipedia.org/w/api.php?action=opensearch&limit=10&format=json&callback=addsugestions&search='+encodeURIComponent(stuff_in_text_box);
+
+	/* this attaches the script to the body of the page */
+	document.body.appendChild(myScript);
+};
+
+
 
  </script>
  </html>
