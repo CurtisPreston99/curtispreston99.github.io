@@ -7,10 +7,7 @@
                 <title>Start Page</title>
     <style>
 
-#PONYS {
-		text-align: center;
- 	margin: auto;
-   }
+
 	.outer {
     display: table;
 
@@ -26,7 +23,7 @@
 .inner {
     margin-left: auto;
     margin-right: auto;
-    
+
 }
                         body {
                                     min-height: 100%;
@@ -88,7 +85,7 @@ background-size: cover;
                                 height: 50px;
                                 line-height: 50px;
                         }
-                        
+
                         footer {
 							position: absolute;
 							bottom: 0;
@@ -103,7 +100,7 @@ background-size: cover;
   text-align: center;
 border: 2px solid grey;
   border-radius: 4px;
-    
+
 
 }
 
@@ -128,25 +125,54 @@ button:focus{
   box-shadow: 0 0 0 2px #0096bfab;
 }
 
-                </style>
- 
 
- 
+#date,#time{
+ color: #ffffff;
+font-family: inherit;
+  font-size: inherit;
+text-align: center;
+}
+
+
+#time{
+  font-size: 50px;
+}
+
+                </style>
+
+
+
         </head>
 
         <body id="main">
 		<table align="center">
+
+        <tr><td>
+        <div id="time"></div>
+        </td></tr>
+        <tr><td>
+        <div id="date"></div>
+        </td></tr>
         <tr><td>
 <script>
 
-  function keypress(s){
+  function keypress(){
 if(event.key === 'Enter') {
        s=  document.getElementById("search").value;
        console.log(s)
-       
+
         searchgoogle(s);
-    }
-    
+    }else{
+
+
+    s='http://suggestqueries.google.com/complete/search?client=chrome&q='+encodeURIComponent(document.getElementById("search").value);
+
+    $.get(s, {},       function(data){
+
+    console.log(data);
+})
+}
+
   }
 
     function searchgoogle(s){
@@ -154,17 +180,17 @@ if(event.key === 'Enter') {
         console.log(q);
        window.open( q, "_top");
     }
-  
+
 </script>
 
-<input id="search" type="text" placeholder="search" class="search" onkeydown="keypress(this.input)"/>  
+<input id="search" type="text" placeholder="search" class="search" onkeydown="keypress()"/>
 
 </tr></td>
 		<tr><td>
         <div id="sugestions"/>
         </tr></td>
 		<tr><td>
-		
+
 
 
 		<div class="outer">
@@ -244,12 +270,12 @@ if(event.key === 'Enter') {
 			<br>
 			<br>
 			<br>
-			
+
 			<p>
 			</tr></td>
 			<tr><td>
 		<div align="center">
-      
+
   <iframe src="http://wizord-gaming.github.io/counter.html" frameborder="0"></iframe>
 
 		</div>
@@ -258,28 +284,28 @@ if(event.key === 'Enter') {
 			</table>
 		</body>
  <script>
- 
- 
- $.get('homepagebackgrounds.txt', {}, function(data){ 
+
+
+ $.get('homepagebackgrounds.txt', {}, function(data){
 		data=data.split("\n");
 		urls=[]
-		for (i = 0; i < data.length; i++) { 
+		for (i = 0; i < data.length; i++) {
 			urls.push("url('"+data[i]+"')")
 				}
 			urls.pop();
 			console.log(urls);
-			
+
 			randombg(urls);
 	})
- 
+
 
  function randombg(pics){
   var bigSize = pics;
-  
-  var random= Math.floor(Math.random() * bigSize.length) + 0;               
+
+  var random= Math.floor(Math.random() * bigSize.length) + 0;
   document.getElementById("main").style.backgroundImage=bigSize[random];
 
-  document.getElementById("search").select();
+
 
 }
 
@@ -301,28 +327,47 @@ document.getElementById('sugestions').innerHTML=list;
 
 var myScript = '';
 
-/* this section handles what happens after a key is pressed inside your input text box */
-document.getElementById('search').onkeyup = function(){
 
-	/* this variable stores whatever is in the input text box */
-	var stuff_in_text_box = document.getElementById('search').value;
-    
-    try{
-    document.getElementById('dataget').remove()
-    }catch{
-    }
-	/* this is the script that will hold the data we're trying to get */
-	myScript = document.createElement('script');
-	
-    myScript.id="dataget";
-	/* this sets the src of the script equal to the url of the data */
-	myScript.src = 'http://en.wikipedia.org/w/api.php?action=opensearch&limit=10&format=json&callback=addsugestions&search='+encodeURIComponent(stuff_in_text_box);
 
-	/* this attaches the script to the body of the page */
-	document.body.appendChild(myScript);
-};
+function getdate(){
+var d = new Date();
+
+stringDate = "";
+
+stringDate+=d.toDateString();
+document.getElementById('date').innerHTML=stringDate;
 
 
 
+stringtime="";
+
+time=d.getHours();
+
+end="am"
+if(time>12){
+time-=12
+end="pm"
+}
+
+stringtime+=time;
+
+
+stringtime+=":";
+stringtime+=d.getMinutes();
+stringtime+=".";
+
+stringtime+=d.getSeconds();
+stringtime+=end;
+
+
+
+
+document.getElementById('time').innerHTML=stringtime;
+}
+getdate();
+window.setInterval(function(){
+    getdate();
+}, 1000);
+ document.getElementById("search").select();
  </script>
  </html>
