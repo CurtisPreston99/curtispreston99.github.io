@@ -165,15 +165,48 @@ if(event.key === 'Enter') {
     }else{
 
 
-    s='http://suggestqueries.google.com/complete/search?client=chrome&q='+encodeURIComponent(document.getElementById("search").value);
+    s='http://suggestqueries.google.com/complete/search?client=firefox&q='+encodeURIComponent(document.getElementById("search").value);
 
-    $.get(s, {},       function(data){
-
-    console.log(data);
-})
+   $.ajax({
+    url: s,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "XML",
+    data: {
+    },
+    success: function (result) {
+    },
+    error: function (result) {
+        console.log(result.responseText);
+        var x=result.responseText.replace("[","{");
+        x=x.replace(",",":");
+        x=x.substring(0, x.length - 1);
+        x=x+"}";
+        console.log(x);
+        jssugestions=JSON.parse(x);
+        console.log(jssugestions);
+        addsugestions(jssugestions[document.getElementById("search").value]);
+    }
+});
 }
 
   }
+
+
+function addsugestions(data){
+	console.log(data);
+    list="<table width=100%>"
+    for(i=0;i<data.length;i++){
+        list+="<tr><td><button onclick='searchgoogle(\""+data[i]+"\")'>";
+        list+=data[i];
+        list+="</button></tr></td>";
+    }
+    list+="</table>"
+console.log(list);
+document.getElementById('sugestions').innerHTML=list;
+}
 
     function searchgoogle(s){
        q="https://www.google.com/search?q="+encodeURIComponent(s)+"&oq="+encodeURIComponent(s);
@@ -311,18 +344,7 @@ if(event.key === 'Enter') {
 
 
 
-function addsugestions(data){
-	console.log(data[1]);
-    list="<table width=100%>"
-    for(i=0;i<data[1].length;i++){
-        list+="<tr><td><button onclick='searchgoogle(\""+data[1][i]+"\")'>";
-        list+=data[1][i];
-        list+="</button></tr></td>";
-    }
-    list+="</table>"
-console.log(list);
-document.getElementById('sugestions').innerHTML=list;
-}
+
 
 
 var myScript = '';
