@@ -41,7 +41,7 @@
 
 <!-- Image Header -->
 <div class="w3-display-container w3-animate-opacity">
-  <img src="./background.png" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+  <img src="./background.png" alt="boat" style="width:100%;height:100%;">
   <div class="w3-container w3-display-middle w3-margin-bottom">
     <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-xlarge w3-theme w3-hover-teal" title="name">Curtis Preston</button>
   </div>
@@ -54,16 +54,18 @@
 
 <div class="w3-row"><br>
 
-<div class="w3-quarter">
-  <img src="./mug.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+<div class="w3-third">
+  <img src="./mug.jpg" alt="Boss" style="width:55%" class="w3-circle">
   <h3>Curtis Preston</h3>
 </div>
 
-<div class="w3-threequarter">
-  <p>I am a student at Massey University, studying software engineering, I compleate my Degree at the begining of 2020.
+<div class="w3-twothird">
+  <div class="w3-left-align" ><h5>
+  <p>I am a student at Massey University, studying software engineering, I complete my Degree at the begining of 2020.
   <br>I enjoy all parts of coding weather a web app, game engine or just a script to automate a task.
-
+</h5>
   </p>
+</div>
 </div>
 
 
@@ -75,7 +77,7 @@
 
 <div class="w3-quarter">
 <h2>My Work</h2>
-<p>this is a set of projects i have worked on
+<p>this is a set of projects I have worked on
 </p></div>
 <div class="w3-container w3-cell w3-quarter">
 
@@ -113,19 +115,6 @@
 
 <div class="w3-container w3-cell w3-quarter">
 
-<div class="w3-card w3-white">
-  <div class="w3-container">
-  <h3>Turitea Project</h3>
-  <div class="w3-card-4">
-  <img src="./Turitea Project.png" class="w3-image">
-</div>
-  <p>The Turitea Project was my capstone project in the final year of my degree</p>
-  <p>in this project we were tasked with making a webapp for exploring data points on a map along with a article system</p>
-
-  <p><a href="https://tiny.cc/turitea">link to project</a></p>
-  <p><a href="https://github.com/wizord-gaming/TuriteaWebResources">link to project repo</a></p>
-  </div>
-  </div>
 </div>
 
 
@@ -133,15 +122,15 @@
 </div>
 <!-- Container -->
 <div class="w3-container" style="position:relative">
-  <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"
+  <a onclick="w3_open()" class="w3-button w3-w3-left-alignxlarge w3-circle w3-teal"
   style="position:absolute;top:-28px;right:24px">+</a>
 </div>
 
 <!-- Pricing Row -->
-<div class="w3-row-padding w3-center w3-padding-64" id="pricing">
+<div class="w3-row-padding w3-center w3-padding-64" id="langRow1">
     <h2>Languages</h2>
     <p>known programing Languages.</p><br>
-    <div class="w3-third w3-margin-bottom">
+    <div class="w3-third">
       <ul class="w3-ul w3-border w3-hover-shadow">
         <li class="w3-theme">
           <p class="w3-xlarge">Java</p>
@@ -151,7 +140,7 @@
       </ul>
     </div>
 
-    <div class="w3-third w3-margin-bottom">
+    <div class="w3-third">
       <ul class="w3-ul w3-border w3-hover-shadow">
         <li class="w3-theme-l2">
           <p class="w3-xlarge">Python</p>
@@ -161,77 +150,74 @@
       </ul>
     </div>
 
-    <div class="w3-third w3-margin-bottom">
+    <div class="w3-third">
       <ul class="w3-ul w3-border w3-hover-shadow">
         <li class="w3-theme">
           <p class="w3-xlarge">Javascript</p>
         </li>
-        <li class="w3-padding-16"><b>50GB</b> Storage</li>
-        <li class="w3-padding-16"><b>50</b> Emails</li>
-        <li class="w3-padding-16"><b>50</b> Domains</li>
-        <li class="w3-padding-16"><b>Endless</b> Support</li>
-        <li class="w3-padding-16">
-          <h2 class="w3-wide"><i class="fa fa-usd"></i> 50</h2>
-          <span class="w3-opacity">per month</span>
-        </li>
-        <li class="w3-theme-l5 w3-padding-24">
-          <button class="w3-button w3-teal w3-padding-large"><i class="fa fa-check"></i> Sign Up</button>
-        </li>
+        <li class="w3-padding-16">Javascript is the defacto web development language and I love the extensive libraries and APIs for it, I also use this when visualizing algorithms using the p5.js libary</li>
       </ul>
     </div>
 </div>
 
-<!-- Contact Container -->
-<div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
-  <div class="w3-row">
-    <div class="w3-col m5">
-    <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
-      <h3>Address</h3>
-      <p>Swing by for a cup of coffee, or whatever.</p>
-      <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i>  Chicago, US</p>
-      <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i>  +00 1515151515</p>
-      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  test@test.com</p>
+<div class="w3-row-padding w3-center" id="langRow2">
+    <div class="w3-third w3-margin-bottom">
+      <ul class="w3-ul w3-border w3-hover-shadow">
+        <li class="w3-theme">
+          <p class="w3-xlarge">C</p>
+        </li>
+        <li class="w3-padding-16">I use C when ever I need speed in my program, I mostly use C for Arduino programing.</li>
+
+      </ul>
     </div>
-    <div class="w3-col m7">
-      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="/action_page.php" target="_blank">
-      <div class="w3-section">
-        <label>Name</label>
-        <input class="w3-input" type="text" name="Name" required>
-      </div>
-      <div class="w3-section">
-        <label>Email</label>
-        <input class="w3-input" type="text" name="Email" required>
-      </div>
-      <div class="w3-section">
-        <label>Message</label>
-        <input class="w3-input" type="text" name="Message" required>
-      </div>
-      <input class="w3-check" type="checkbox" checked name="Like">
-      <label>I Like it!</label>
-      <button type="submit" class="w3-button w3-right w3-theme">Send</button>
-      </form>
+
+    <div class="w3-third w3-margin-bottom">
+      <ul class="w3-ul w3-border w3-hover-shadow">
+        <li class="w3-theme-l2">
+          <p class="w3-xlarge">Bash</p>
+        </li>
+        <li class="w3-padding-16">I mostly use Bash to automate tasks and to make command-line tools for my Linux install.</li>
+
+      </ul>
     </div>
-  </div>
+
+    <div class="w3-third w3-margin-bottom">
+      <ul class="w3-ul w3-border w3-hover-shadow">
+        <li class="w3-theme">
+          <p class="w3-xlarge">SQL</p>
+        </li>
+        <li class="w3-padding-16">SQL is one of the most useful laguages I have learnt, the simplicity and divercity and ease of use of SQL make it required when ever I need to store lots of data</li>
+      </ul>
+    </div>
 </div>
 
-<!-- Image of location/map -->
-<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
+<div class="w3-content">
+<div class=" w3-center" id="contact">
+  <div class="w3-margin-bottom">
+    <ul class="w3-ul w3-border w3-hover-shadow">
+      <li class="w3-theme-l2">
+        <p class="w3-xlarge"><h3>contact me</h3></p>
+      </li>
+      <li class="w3-padding-16 w3-cell-row">
+        <div class="w3-cell">
+          <h4>Linkedin</h4>
+          
+        </div>
+        <div class="w3-cell">
+          <h4>email</h4>
+            curtispreston1999@gmail.com
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</div>
+</div>
+
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
-  <h4>Follow Us</h4>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
-  <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 
-  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
-    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>
-    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
-    <i class="fa fa-chevron-circle-up"></i></span></a>
-  </div>
 </footer>
 
 <script>
