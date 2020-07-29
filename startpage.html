@@ -1,0 +1,163 @@
+<html lang="en">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <style>
+        body {
+            background-color: rgb(34, 34, 34);
+            
+            color: rgb(231, 231, 231);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+
+        }
+
+        img{
+            margin: 5%;
+        }
+
+        .content{
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));        
+        }
+
+        .cont {
+            background-color: rgba(65, 65, 65,0.4);
+            display: grid;
+            grid-gap: 1rem;
+            margin: 5px;
+          }
+
+          #time{
+            font-size:xx-large;
+          }
+
+          #date{
+            font-size:x-large;
+          }
+
+          .center{
+              text-align: center;
+          }
+          .fill{
+            
+            object-fit: contain;
+            width: 100%;
+   height: 100%;
+ 
+
+          }
+
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>start page</title>
+</head>
+
+<body id="body">
+    <div class="center">
+    <div id="time"></div>
+    <div id="date"></div>
+    </div>
+
+    <div class="content">
+        <div class="cont center">
+
+            <iframe src="https://shrib.com/#WoollyNeckedStork97NVq74" frameborder="0" class="cont fill"></iframe>
+
+        </div>
+        <div class="cont center">
+                <h2>Chans</h2>
+                <div>
+                    <a href="https://www.4chan.org/"><img src="https://s.4cdn.org/image/apple-touch-icon-ipad-retina.png" alt="Smiley face" height="52" width="52"></a>
+                    <a href="http://boards.4chan.org/vg/agdg"><img src="https://alloyed.github.io/agdg-links/img/AGDG.png" alt="Smiley face" height="52" width="52"></a>
+                </div>
+        </div>
+        <div class="cont center">
+            <h2>entertainment</h2>
+            <div>
+                <a href="https://www.youtube.com/"><img src="https://s.ytimg.com/yts/img/favicon_144-vflWmzoXw.png" alt="Smiley face" height="52" width="52"></a>
+                <a href="https://music.youtube.com/"><img src="https://cdn.wccftech.com/wp-content/uploads/2018/01/Youtube-music.png" alt="Smiley face" height="52" width="52"></a>
+            </div>
+        </div>
+        <div class="cont center">
+            <h2>tools</h2>
+            <div>
+                <a href="https://docs.google.com/document/u/0/"><img src="https://lh4.ggpht.com/-wROmWQVYTcjs3G6H0lYkBK2nPGYsY75Ik2IXTmOO2Oo0SMgbDtnF0eqz-BRR1hRQg=w300" alt="Smiley face" height="52" width="52"></a>
+                <a href="https://drive.google.com"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Logo_of_Google_Drive.png" alt="Smiley face" height="52" width="52"></a>
+                <a href="https://www.color-hex.com/"><img src="https://crosstownarts.org/wp-content/uploads/2019/11/colour-wheel-1740381_1920-1200x1200.jpg" alt="Smiley face" height="52" width="52"></a>
+            </div>
+        </div>
+    </div>
+    <div class="center">
+        <iframe src="http://wizord-gaming.github.io/counter.html" frameborder="0"></iframe>
+    </div>
+</body>
+<script>
+    $.get('http://wizord-gaming.github.io/homepagebackgrounds.txt', {}, function(data){
+		data=data.split("\n");
+		urls=[]
+		for (i = 0; i < data.length; i++) {
+			urls.push("url('"+data[i]+"')")
+				}
+			urls.pop();
+			console.log(urls);
+
+			randombg(urls);
+	})
+
+
+ function randombg(pics){
+  var bigSize = pics;
+
+  var random= Math.floor(Math.random() * bigSize.length) + 0;
+  document.getElementById("body").style.backgroundImage=bigSize[random];
+
+
+
+}
+
+function getdate(){
+    var d = new Date();
+    
+    stringDate = "";
+    
+    stringDate+=d.toDateString();
+    document.getElementById('date').innerHTML=stringDate;
+    
+    
+    
+    stringtime="";
+    
+    time=d.getHours();
+    
+    end="am"
+    if(time>12){
+    time-=12
+    end="pm"
+    }
+    
+    stringtime+=time;
+    
+    
+    stringtime+=":";
+    stringtime+=d.getMinutes();
+    stringtime+=".";
+    
+    stringtime+=d.getSeconds();
+    stringtime+=end;
+    
+    
+    
+    
+    document.getElementById('time').innerHTML=stringtime;
+    }
+    getdate();
+    window.setInterval(function(){
+        getdate();
+    }, 1000);
+</script>
+</html>
