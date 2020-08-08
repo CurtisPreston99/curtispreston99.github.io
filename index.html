@@ -171,13 +171,26 @@
                         <div class="w3-card-4">
                             <img src="https://i.imgur.com/cKg8O2e.png" alt="Lights" style="width:100%">
                         </div>
-                        <h3>Towers of Hanoi - solver and game</h3>  
-                        <p>Towers Of Hanoi is a puzzle game where you move disks from the first pole to the last pole keeping the order, you can’t put a larger disk on top of a smaller one, and you can only move one disk at a time.
-                            <br> I used my own game engine (CGE) for game management and ease of development, I also used Gradle as a build tool, JUnit was used for testing in order to make sure that all parts work even after adjustments. And that algorithms work for a large sample set without manual testing.
-                            <br> my solving algorithm is a graph-based breath first search approach it takes 2<sup>N</sup>-1 recursive calls from the initial state to reach the final state. Each recursion takes the frontier and performs every possible move on each state all legal ones are then added to the new frontier, then all previous states and duplicates are removed from the frontier, un till one of the possible moves yields the end state of all disks being on the opposite pole and ordered.
+                        <h3>Towers of Hanoi - solver and game</h3>
+                        <p>Towers Of Hanoi is a puzzle game where you move disks from the first pole to the last pole
+                            keeping the order, you can’t put a larger disk on top of a smaller one, and you can only
+                            move one disk at a time.
+                            <br> I used my own game engine (CGE) for game management and ease of development, I also
+                            used Gradle as a build tool, JUnit was used for testing in order to make sure that all parts
+                            work even after adjustments. And that algorithms work for a large sample set without manual
+                            testing.
+                            <br> my solving algorithm is a graph-based breath first search approach it takes
+                            2<sup>N</sup>-1 recursive calls from the initial state to reach the final state. Each
+                            recursion takes the frontier and performs every possible move on each state all legal ones
+                            are then added to the new frontier, then all previous states and duplicates are removed from
+                            the frontier, un till one of the possible moves yields the end state of all disks being on
+                            the opposite pole and ordered.
                         </p>
                         <a class="btn btn-primary" href="https://github.com/wizord-gaming/towerOfHanoi">link to
                             project repo</a>
+                        <a class="btn btn-primary"
+                            href="https://www.mediafire.com/file/x81j49m0guaygma/towerOfHanoi-all.jar/file">executable
+                            download</a>
                     </div>
 
                     <div class="col-sm-6" style="margin-top: 2rem;">
