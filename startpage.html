@@ -3,6 +3,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <style>
+
+        
         body {
             background-color: rgb(34, 34, 34);
             background-size: cover;
@@ -29,27 +31,67 @@
 
             min-height: 100px;
             margin: 5px;
-          }
+        }
 
-          #time{
+        #time{
             font-size:xx-large;
-          }
+        }
 
-          #date{
+        #date{
             font-size:x-large;
-          }
+        }
 
-          .center{
-              text-align: center;
-          }
+        .center{
+                text-align: center;
+        }
 
-          #NASAdesc {
+        #NASAdesc {
             position: absolute;
             bottom: 8px;
             right: 16px;
             font-size: 18px;
             z-index: -1;
-          }
+
+        }
+
+        .contrastBack {
+            background: inherit;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            filter: invert(1) grayscale(2) contrast(9);
+        }
+        
+        #katCounter{
+            font-size : 28;
+            text-align: center;
+        }
+
+        #switch{
+            display:inline-block;
+            padding:0.35em 1.2em;
+            border:0.1em solid #FFFFFF;
+            margin:0 0.3em 0.3em 0;
+            border-radius:0.12em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            font-weight:300;
+            color:#FFFFFF;
+            text-align:center;
+            transition: all 0.2s;
+        }
+        #switch:hover{
+            color:#000000;
+            background-color:#FFFFFF;
+        }
+
+        @media (pointer:none), (pointer:coarse) {
+            #NASAdesc {
+                position: relative;
+            }
+        }
 
     </style>
 <head>
@@ -59,7 +101,8 @@
 </head>
 
 <body id="body">
-    <button onclick="switchBackground()">c</button>
+    <a onclick="switchBackground()" id="switch">switch</a>
+
     <div class="center">
     <div id="time"></div>
     <div id="date"></div>
@@ -89,10 +132,8 @@
             </div>
         </div>
     </div>
-    <div class="center">
-        <iframe src="./counter.html" frameborder="0"></iframe>
-    </div>
-    <div id="NASAdesc"></div>
+    <div id="katCounter"></div>
+    <div id="NASAdesc" class="contrastBack"></div>
 
 </body>
 <script>
@@ -143,6 +184,29 @@
         }
     }
 
+    function getKatCounter(){
+
+
+
+        var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
+
+        function countup(yr,m,d){
+        var today=new Date()
+        var todayy=today.getYear()
+        if (todayy < 1000)
+        todayy+=1900
+        var todaym=today.getMonth()
+        var todayd=today.getDate()
+        var todaystring=montharray[todaym]+" "+todayd+", "+todayy
+        var paststring=montharray[m-1]+" "+d+", "+yr
+        var difference=(Math.round((Date.parse(todaystring)-Date.parse(paststring))/(24*60*60*1000))*1)
+        difference+=" days"
+        return difference
+        }
+        //enter the count up date using the format year/month/day
+        document.getElementById("katCounter").innerText=countup(2017,08,12);
+    }
+
 
  function randombg(pics){
   var bigSize = pics;
@@ -189,7 +253,9 @@ function getdate(){
     
     document.getElementById('time').innerHTML=stringtime;
     }
+
     getBackgroud();
+    getKatCounter();
     getdate();
     window.setInterval(function(){
         getdate();
