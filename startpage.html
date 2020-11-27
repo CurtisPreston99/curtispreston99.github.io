@@ -5,7 +5,7 @@
     <style>
         body {
             background-color: rgb(34, 34, 34);
-            
+            background-size: cover;
             color: rgb(231, 231, 231);
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -42,12 +42,13 @@
           .center{
               text-align: center;
           }
-          .fill{
-            
-            object-fit: contain;
-            width: 100%;
-            height: 100%;
 
+          #NASAdesc {
+            position: absolute;
+            bottom: 8px;
+            right: 16px;
+            font-size: 18px;
+            z-index: -1;
           }
 
     </style>
@@ -58,6 +59,7 @@
 </head>
 
 <body id="body">
+    <button onclick="switchBackground()">c</button>
     <div class="center">
     <div id="time"></div>
     <div id="date"></div>
@@ -90,26 +92,63 @@
     <div class="center">
         <iframe src="./counter.html" frameborder="0"></iframe>
     </div>
+    <div id="NASAdesc"></div>
+
 </body>
 <script>
-    $.get('./homepagebackgrounds.txt', {}, function(data){
-		data=data.split("\n");
-		urls=[]
-		for (i = 0; i < data.length; i++) {
-			urls.push("url('"+data[i]+"')")
-				}
-			urls.pop();
-			console.log(urls);
 
-			randombg(urls);
-	})
+    function switchBackground(){
+        
+        const background = window.localStorage.getItem('background');
+        if(background == "random"){
+            window.localStorage.setItem('background','Nasa')
+        }else{
+            window.localStorage.setItem('background','random')
+
+        }
+        getBackgroud();
+    }
+
+    function getBackgroud(){
+        const background = window.localStorage.getItem('background');
+        let backgroundUrl="";
+
+        if(background == "random"){
+            $.get('./homepagebackgrounds.txt', {}, function(data){
+                data=data.split("\n");
+                urls=[]
+                for (i = 0; i < data.length; i++) {
+                    urls.push("url('"+data[i]+"')")
+                        }
+                    urls.pop();
+                    console.log(urls);
+        
+                    backgroundUrl=randombg(urls);
+                    document.getElementById("body").style.backgroundImage=backgroundUrl;
+                    document.getElementById("NASAdesc").innerText=" ";
+
+
+            })
+        }else{
+            fetch(`https://api.nasa.gov/planetary/apod?api_key=IrKNfnjkrHn3vPGNQMskaTX1jHbN6eLUqw4nZQcb`)
+            .then(res => res.json()) // parse response as JSON (can be res.text() for plain response)
+            .then(response => {
+                backgroundUrl = response.hdurl;
+                console.log(response)
+                document.getElementById("body").style.backgroundImage=`url(${backgroundUrl})`;
+                document.getElementById("NASAdesc").innerText=response.explanation;
+
+
+            });
+        }
+    }
 
 
  function randombg(pics){
   var bigSize = pics;
 
   var random= Math.floor(Math.random() * bigSize.length) + 0;
-  document.getElementById("body").style.backgroundImage=bigSize[random];
+  return bigSize[random];
 
 
 
@@ -150,9 +189,12 @@ function getdate(){
     
     document.getElementById('time').innerHTML=stringtime;
     }
+    getBackgroud();
     getdate();
     window.setInterval(function(){
         getdate();
     }, 1000);
+
+
 </script>
 </html>
