@@ -1,99 +1,125 @@
 <html lang="en">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-    <style>
+<style>
+    body {
+        background-color: rgb(34, 34, 34);
+        background-size: cover;
+        color: rgb(231, 231, 231);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
 
-        
-        body {
-            background-color: rgb(34, 34, 34);
-            background-size: cover;
-            color: rgb(231, 231, 231);
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
+    }
 
-        }
+    img {
+        margin: 5%;
+    }
 
-        img{
-            margin: 5%;
-        }
+    .content {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
 
-        .content{
-            display: grid;
-            grid-gap: 1rem;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));        
-        }
+    .cont {
+        background-color: rgba(65, 65, 65, 0.4);
+        display: grid;
 
-        .cont {
-            background-color: rgba(65, 65, 65,0.4);
-            display: grid;
+        min-height: 100px;
+        margin: 5px;
+    }
 
-            min-height: 100px;
-            margin: 5px;
-        }
+    #time {
+        font-size: xx-large;
+    }
 
-        #time{
-            font-size:xx-large;
-        }
+    #date {
+        font-size: x-large;
+    }
 
-        #date{
-            font-size:x-large;
-        }
+    .center {
+        text-align: center;
+    }
 
-        .center{
-                text-align: center;
-        }
+    #NASAdesc {
+        position: absolute;
+        padding: 10px;
+        bottom: 40px;
+        font-size: 18px;
+        z-index: -1;
 
+    }
+
+    .contrastBack {
+        background: inherit;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-align: center;
+        filter: invert(1) grayscale(2) contrast(9);
+    }
+
+    #katCounter {
+        position: absolute;
+        padding-left: 47%;
+        bottom: 8px;
+
+        font-size: 28;
+        text-align: center;
+    }
+
+    #switch {
+        display: inline-block;
+        padding: 0.35em 1.2em;
+        border: 0.1em solid #FFFFFF;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 0.12em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        color: #FFFFFF;
+        text-align: center;
+        transition: all 0.2s;
+    }
+
+    #switch:hover {
+        color: #000000;
+        background-color: #FFFFFF;
+    }
+
+    #weather {
+        mix-blend-mode: lighten;
+        position: absolute;
+        right: 84px;
+        top: 0px;
+    }
+
+
+    @media (pointer:none),
+    (pointer:coarse) {
         #NASAdesc {
-            position: absolute;
-            padding: 10px;
-            bottom: 8px;
-            font-size: 18px;
-            z-index: -1;
-
+            position: inherit;
         }
 
-        .contrastBack {
-            background: inherit;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-align: center;
-            filter: invert(1) grayscale(2) contrast(9);
-        }
-        
-        #katCounter{
-            font-size : 28;
-            text-align: center;
+        #katCounter {
+            padding-left: 0%;
+            position: inherit;
         }
 
-        #switch{
-            display:inline-block;
-            padding:0.35em 1.2em;
-            border:0.1em solid #FFFFFF;
-            margin:0 0.3em 0.3em 0;
-            border-radius:0.12em;
-            box-sizing: border-box;
-            text-decoration:none;
-            font-family:'Roboto',sans-serif;
-            font-weight:300;
-            color:#FFFFFF;
-            text-align:center;
-            transition: all 0.2s;
-        }
-        #switch:hover{
-            color:#000000;
-            background-color:#FFFFFF;
+        #weather {
+            isolation: isolate;
+            mix-blend-mode: lighten;
+            position: inherit;
+            right: 84px;
+            top: 0px;
         }
 
-        @media (pointer:none), (pointer:coarse) {
-            #NASAdesc {
-                position: relative;
-            }
-        }
+    }
+</style>
 
-    </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,31 +130,47 @@
     <a onclick="switchBackground()" id="switch">switch</a>
 
     <div class="center">
-    <div id="time"></div>
-    <div id="date"></div>
+        <div id="weather">
+            <img src="http://wttr.in/palmerston%20north%20new%20zealand.png?0" alt="">
+        </div>
+        <div>
+            <div id="time"></div>
+            <div id="date"></div>
+        </div>
     </div>
 
     <div class="content">
         <div class="cont center">
-                <h2>Chans</h2>
-                <div>
-                    <a href="https://www.4chan.org/"><img src="https://s.4cdn.org/image/apple-touch-icon-ipad-retina.png" alt="Smiley face" height="52" width="52"></a>
-                    <a href="http://boards.4chan.org/vg/agdg"><img src="https://alloyed.github.io/agdg-links/img/AGDG.png" alt="Smiley face" height="52" width="52"></a>
-                </div>
+            <h2>Chans</h2>
+            <div>
+                <a href="https://www.4chan.org/"><img src="https://s.4cdn.org/image/apple-touch-icon-ipad-retina.png"
+                        alt="Smiley face" height="52" width="52"></a>
+                <a href="http://boards.4chan.org/vg/agdg"><img src="https://alloyed.github.io/agdg-links/img/AGDG.png"
+                        alt="Smiley face" height="52" width="52"></a>
+            </div>
         </div>
         <div class="cont center">
             <h2>entertainment</h2>
             <div>
-                <a href="https://www.youtube.com/"><img src="https://s.ytimg.com/yts/img/favicon_144-vflWmzoXw.png" alt="Smiley face" height="52" width="52"></a>
-                <a href="https://music.youtube.com/"><img src="https://cdn.wccftech.com/wp-content/uploads/2018/01/Youtube-music.png" alt="Smiley face" height="52" width="52"></a>
+                <a href="https://www.youtube.com/"><img src="https://s.ytimg.com/yts/img/favicon_144-vflWmzoXw.png"
+                        alt="Smiley face" height="52" width="52"></a>
+                <a href="https://music.youtube.com/"><img
+                        src="https://cdn.wccftech.com/wp-content/uploads/2018/01/Youtube-music.png" alt="Smiley face"
+                        height="52" width="52"></a>
             </div>
         </div>
         <div class="cont center">
             <h2>tools</h2>
             <div>
-                <a href="https://docs.google.com/document/u/0/"><img src="https://lh4.ggpht.com/-wROmWQVYTcjs3G6H0lYkBK2nPGYsY75Ik2IXTmOO2Oo0SMgbDtnF0eqz-BRR1hRQg=w300" alt="Smiley face" height="52" width="52"></a>
-                <a href="https://drive.google.com"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Logo_of_Google_Drive.png" alt="Smiley face" height="52" width="52"></a>
-                <a href="https://www.color-hex.com/"><img src="https://crosstownarts.org/wp-content/uploads/2019/11/colour-wheel-1740381_1920-1200x1200.jpg" alt="Smiley face" height="52" width="52"></a>
+                <a href="https://docs.google.com/document/u/0/"><img
+                        src="https://lh4.ggpht.com/-wROmWQVYTcjs3G6H0lYkBK2nPGYsY75Ik2IXTmOO2Oo0SMgbDtnF0eqz-BRR1hRQg=w300"
+                        alt="Smiley face" height="52" width="52"></a>
+                <a href="https://drive.google.com"><img
+                        src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Logo_of_Google_Drive.png"
+                        alt="Smiley face" height="52" width="52"></a>
+                <a href="https://www.color-hex.com/"><img
+                        src="https://crosstownarts.org/wp-content/uploads/2019/11/colour-wheel-1740381_1920-1200x1200.jpg"
+                        alt="Smiley face" height="52" width="52"></a>
             </div>
         </div>
     </div>
@@ -138,129 +180,141 @@
 </body>
 <script>
 
-    function switchBackground(){
-        
+    function switchBackground() {
+
         const background = window.localStorage.getItem('background');
-        if(background == "random"){
-            window.localStorage.setItem('background','Nasa')
-        }else{
-            window.localStorage.setItem('background','random')
+        if (background == "random") {
+            window.localStorage.setItem('background', 'Nasa')
+        } else {
+            window.localStorage.setItem('background', 'random')
 
         }
         getBackgroud();
     }
 
-    function getBackgroud(){
+    function getBackgroud() {
         const background = window.localStorage.getItem('background');
-        let backgroundUrl="";
+        let backgroundUrl = "";
 
-        if(background == "random"){
-            $.get('./homepagebackgrounds.txt', {}, function(data){
-                data=data.split("\n");
-                urls=[]
+        if (background == "random") {
+            $.get('./homepagebackgrounds.txt', {}, function (data) {
+                data = data.split("\n");
+                urls = []
                 for (i = 0; i < data.length; i++) {
-                    urls.push("url('"+data[i]+"')")
-                        }
-                    urls.pop();
-                    console.log(urls);
-        
-                    backgroundUrl=randombg(urls);
-                    document.getElementById("body").style.backgroundImage=backgroundUrl;
-                    document.getElementById("NASAdesc").innerText=" ";
+                    urls.push("url('" + data[i] + "')")
+                }
+                urls.pop();
+                console.log(urls);
+
+                backgroundUrl = randombg(urls);
+                document.getElementById("body").style.backgroundImage = backgroundUrl;
+                document.getElementById("NASAdesc").innerText = " ";
 
 
             })
-        }else{
+        } else {
             fetch(`https://api.nasa.gov/planetary/apod?api_key=IrKNfnjkrHn3vPGNQMskaTX1jHbN6eLUqw4nZQcb`)
-            .then(res => res.json()) // parse response as JSON (can be res.text() for plain response)
-            .then(response => {
-                backgroundUrl = response.hdurl;
-                console.log(response)
-                document.getElementById("body").style.backgroundImage=`url(${backgroundUrl})`;
-                document.getElementById("NASAdesc").innerText=response.explanation;
+                .then(res => res.json()) // parse response as JSON (can be res.text() for plain response)
+                .then(response => {
+                    backgroundUrl = response.hdurl;
+                    console.log(response)
+                    document.getElementById("body").style.backgroundImage = `url(${backgroundUrl})`;
+                    document.getElementById("NASAdesc").innerText = response.explanation;
 
 
-            });
+                });
         }
     }
 
-    function getKatCounter(){
+    function getKatCounter() {
 
 
 
-        var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
+        var montharray = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
-        function countup(yr,m,d){
-        var today=new Date()
-        var todayy=today.getYear()
-        if (todayy < 1000)
-        todayy+=1900
-        var todaym=today.getMonth()
-        var todayd=today.getDate()
-        var todaystring=montharray[todaym]+" "+todayd+", "+todayy
-        var paststring=montharray[m-1]+" "+d+", "+yr
-        var difference=(Math.round((Date.parse(todaystring)-Date.parse(paststring))/(24*60*60*1000))*1)
-        difference+=" days"
-        return difference
+        function countup(yr, m, d) {
+            var today = new Date()
+            var todayy = today.getYear()
+            if (todayy < 1000)
+                todayy += 1900
+            var todaym = today.getMonth()
+            var todayd = today.getDate()
+            var todaystring = montharray[todaym] + " " + todayd + ", " + todayy
+            var paststring = montharray[m - 1] + " " + d + ", " + yr
+            var difference = (Math.round((Date.parse(todaystring) - Date.parse(paststring)) / (24 * 60 * 60 * 1000)) * 1)
+            difference += " days"
+            return difference
         }
         //enter the count up date using the format year/month/day
-        document.getElementById("katCounter").innerText=countup(2017,08,12);
+        document.getElementById("katCounter").innerText = countup(2017, 08, 12);
     }
 
 
- function randombg(pics){
-  var bigSize = pics;
+    function randombg(pics) {
+        var bigSize = pics;
 
-  var random= Math.floor(Math.random() * bigSize.length) + 0;
-  return bigSize[random];
+        var random = Math.floor(Math.random() * bigSize.length) + 0;
+        return bigSize[random];
 
 
 
-}
-
-function getdate(){
-    var d = new Date();
-    
-    stringDate = "";
-    
-    stringDate+=d.toDateString();
-    document.getElementById('date').innerHTML=stringDate;
-    
-    
-    
-    stringtime="";
-    
-    time=d.getHours();
-    
-    end="am"
-    if(time>12){
-    time-=12
-    end="pm"
     }
-    
-    stringtime+=time;
-    
-    
-    stringtime+=":";
-    stringtime+=d.getMinutes();
-    stringtime+=".";
-    
-    stringtime+=d.getSeconds();
-    stringtime+=end;
-    
-    
-    
-    
-    document.getElementById('time').innerHTML=stringtime;
+
+    function getWeather() {
+        fetch(`http://wttr.in/palmerston%20north%20new%20zealand?0`)
+            .then(res => res.text()) // parse response as JSON (can be res.text() for plain response)
+            .then(response => {
+                console.log(response)
+                document.getElementById("weather").contentWindow.document.body.innerHTML = response;
+
+            });
+    }
+
+    function getdate() {
+        var d = new Date();
+
+        stringDate = "";
+
+        stringDate += d.toDateString();
+        document.getElementById('date').innerHTML = stringDate;
+
+
+
+        stringtime = "";
+
+        time = d.getHours();
+
+        end = "am"
+        if (time > 12) {
+            time -= 12
+            end = "pm"
+        }
+
+        stringtime += time;
+
+
+        stringtime += ":";
+        stringtime += d.getMinutes();
+        stringtime += ".";
+
+        stringtime += d.getSeconds();
+        stringtime += end;
+
+
+
+
+        document.getElementById('time').innerHTML = stringtime;
     }
 
     getBackgroud();
     getKatCounter();
+    getWeather();
     getdate();
-    window.setInterval(function(){
+    window.setInterval(function () {
         getdate();
     }, 1000);
 
 
 </script>
+
 </html>
