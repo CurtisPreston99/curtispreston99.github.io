@@ -204,7 +204,6 @@
                     urls.push("url('" + data[i] + "')")
                 }
                 urls.pop();
-                console.log(urls);
 
                 backgroundUrl = randombg(urls);
                 document.getElementById("body").style.backgroundImage = backgroundUrl;
@@ -213,17 +212,28 @@
 
             })
         } else {
-            fetch(`https://api.nasa.gov/planetary/apod?api_key=IrKNfnjkrHn3vPGNQMskaTX1jHbN6eLUqw4nZQcb`)
-                .then(res => res.json()) // parse response as JSON (can be res.text() for plain response)
-                .then(response => {
-                    backgroundUrl = response.hdurl;
-                    console.log(response)
-                    document.getElementById("body").style.backgroundImage = `url(${backgroundUrl})`;
-                    document.getElementById("NASAdesc").innerText = response.explanation;
 
+            $.get("https://api.nasa.gov/planetary/apod?api_key=IrKNfnjkrHn3vPGNQMskaTX1jHbN6eLUqw4nZQcb", function (out) {
+                setNasa(out)
+            })
+                .fail(function (data) {
 
-                });
+                    let yesterday = new Date();
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    let yesterdayString = yesterday.toISOString().slice(0, 10);
+                    $.get(`https://api.nasa.gov/planetary/apod?api_key=IrKNfnjkrHn3vPGNQMskaTX1jHbN6eLUqw4nZQcb&date=${yesterdayString}`, function (out) {
+                        console.log(out)
+                        setNasa(out);
+                    })
+                })
+
         }
+    }
+
+    function setNasa(nasaJson) {
+        document.getElementById("body").style.backgroundImage = `url(${nasaJson.hdurl})`;
+        document.getElementById("NASAdesc").innerText = nasaJson.explanation;
+
     }
 
     function getKatCounter() {
@@ -260,15 +270,6 @@
 
     }
 
-    function getWeather() {
-        fetch(`http://wttr.in/palmerston%20north%20new%20zealand?0`)
-            .then(res => res.text()) // parse response as JSON (can be res.text() for plain response)
-            .then(response => {
-                console.log(response)
-                document.getElementById("weather").contentWindow.document.body.innerHTML = response;
-
-            });
-    }
 
     function getdate() {
         var d = new Date();
@@ -308,7 +309,6 @@
 
     getBackgroud();
     getKatCounter();
-    getWeather();
     getdate();
     window.setInterval(function () {
         getdate();
