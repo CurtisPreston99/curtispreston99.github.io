@@ -10,7 +10,12 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center;
-
+        opacity: 1.0;
+        -webkit-transition: background 1.5s linear;
+        -moz-transition: background 1.5s linear;
+        -o-transition: background 1.5s linear;
+        -ms-transition: background 1.5s linear;
+        transition: background 1.5s linear;
     }
 
     img {
@@ -175,11 +180,12 @@
         </div>
     </div>
     <div id="katCounter"></div>
-    <div id="NASAdesc" class="contrastBack"></div>
+    <div id="NASAdesc" ></div>
 
 </body>
 <script>
-
+    let backgrounds = []
+    let point = 0;
     function switchBackground() {
 
         const background = window.localStorage.getItem('background');
@@ -199,12 +205,12 @@
         if (background == "random") {
             $.get('./homepagebackgrounds.txt', {}, function (data) {
                 data = data.split("\n");
-                urls = []
+                let urls = []
                 for (i = 0; i < data.length; i++) {
                     urls.push("url('" + data[i] + "')")
                 }
                 urls.pop();
-
+                backgrounds = urls;
                 backgroundUrl = randombg(urls);
                 document.getElementById("body").style.backgroundImage = backgroundUrl;
                 document.getElementById("NASAdesc").innerText = " ";
@@ -264,10 +270,8 @@
         var bigSize = pics;
 
         var random = Math.floor(Math.random() * bigSize.length) + 0;
+        point = random;
         return bigSize[random];
-
-
-
     }
 
 
@@ -307,12 +311,29 @@
         document.getElementById('time').innerHTML = stringtime;
     }
 
+    function swapBackground() {
+        const background = window.localStorage.getItem('background');
+        if (background == "random") {
+            let cur = document.getElementById("body").style.backgroundImage;
+
+            let n = randombg(backgrounds);
+            while (n == cur) {
+                n = randombg(backgrounds);
+            }
+            document.getElementById("body").style.backgroundImage = n;
+        }
+    }
+
     getBackgroud();
     getKatCounter();
     getdate();
     window.setInterval(function () {
         getdate();
     }, 1000);
+
+    window.setInterval(function () {
+        swapBackground();
+    }, 5000);
 
 
 </script>
