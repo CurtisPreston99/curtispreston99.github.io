@@ -3,6 +3,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 <style>
+
+    *{
+        z-index: 1;
+    }
+
     body {
         background-color: rgb(34, 34, 34);
         background-size: cover;
@@ -53,7 +58,7 @@
         padding: 10px;
         bottom: 40px;
         font-size: 18px;
-        z-index: -1;
+        z-index: 0;
 
     }
 
@@ -102,6 +107,13 @@
         top: 0px;
     }
 
+    #mediaBackground {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+    }
+
 
     @media (pointer:none),
     (pointer:coarse) {
@@ -132,6 +144,7 @@
 </head>
 
 <body id="body">
+    <div id="mediaBackground"></div>
     <a onclick="switchBackground()" id="switch">switch</a>
 
     <div class="center">
@@ -180,7 +193,7 @@
         </div>
     </div>
     <div id="katCounter"></div>
-    <div id="NASAdesc" ></div>
+    <div id="NASAdesc"></div>
 
 </body>
 <script>
@@ -219,7 +232,7 @@
             })
         } else {
 
-            $.get("https://api.nasa.gov/planetary/apod?api_key=IrKNfnjkrHn3vPGNQMskaTX1jHbN6eLUqw4nZQcb", function (out) {
+            $.get("https://api.nasa.gov/planetary/apod?api_key=IrKNfnjkrHn3vPGNQMskaTX1jHbN6eLUqw4nZQcb&date=2021-03-15", function (out) {
                 setNasa(out)
             })
                 .fail(function (data) {
@@ -237,7 +250,18 @@
     }
 
     function setNasa(nasaJson) {
-        document.getElementById("body").style.backgroundImage = `url(${nasaJson.hdurl})`;
+        console.log(nasaJson);
+        if (nasaJson.media_type == "image") {
+            document.getElementById("body").style.backgroundImage = `url(${nasaJson.hdurl})`;
+        } else {
+            let elm = document.getElementById("mediaBackground");
+            
+            let ifrm = document.createElement("iframe");
+            ifrm.setAttribute("src", nasaJson.url);
+            ifrm.style.width = "100%";
+            ifrm.style.height = "100%";
+            elm.appendChild(ifrm);
+        }
         document.getElementById("NASAdesc").innerText = nasaJson.explanation;
 
     }
